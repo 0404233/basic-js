@@ -13,12 +13,12 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getSeason(date) {
 
-  if (date.length === 0) {
+  if (arguments.length === 0) {
     return 'Unable to determine the time of year!';
-  } else if (date instanceof Date === false) {
-      return 'Invalid date!';
-  } else {
-          if (date.getMonth() === 11 || date.getMonth() === 0 || date.getMonth() === 1) {
+  }
+
+  try {
+    if (date.getMonth() === 11 || date.getMonth() === 0 || date.getMonth() === 1) {
       return 'winter';
     } else if (date.getMonth() === 2 || date.getMonth() === 3 || date.getMonth() === 4) {
       return 'spring';
@@ -27,6 +27,8 @@ function getSeason(date) {
     } else if (date.getMonth() === 8 || date.getMonth() === 9 || date.getMonth() === 10) {
       return 'autumn';
     }
+  } catch (e) {
+    return 'Invalid date!';
   }
 }
 
