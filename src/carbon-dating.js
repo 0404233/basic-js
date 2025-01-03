@@ -21,13 +21,17 @@ function dateSample(sampleActivity) {
   if (typeof sampleActivity !== 'string') {
     return false;
   }
-  const num = Number(sampleActivity);
-  
-  if (isNaN(num) || num <= 0 || num > 15) {
-      return false;
+
+  const activity = Number(sampleActivity);
+
+  if (
+    isNaN(activity) ||
+    activity <= 0 ||
+    activity > MODERN_ACTIVITY
+  ) {
+    return false;
   }
-  
-  return Math.ceil(Math.log(15 / sampleActivity) / (0.693 / 5730));
+  return Math.ceil(Math.log(MODERN_ACTIVITY / activity) / (0.693 / HALF_LIFE_PERIOD));
 }
 
 module.exports = {
