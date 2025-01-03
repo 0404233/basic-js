@@ -24,7 +24,7 @@ function createDreamTeam(members) {
   members.forEach(i => {
 
     if (typeof i === 'string') {
-              const trim = i.trim();
+      const trim = i.trim();
       result += trim[0];
     }
   });
